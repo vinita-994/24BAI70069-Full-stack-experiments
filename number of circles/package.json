@@ -1,0 +1,24 @@
+{
+  "name": "svg-drawing-tool",
+  "version": "1.0.0",
+  "description": "Interactive SVG Drawing Tool",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["react", "svg", "drawing"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.4",
+    "vite": "^5.2.13"
+  }
+}

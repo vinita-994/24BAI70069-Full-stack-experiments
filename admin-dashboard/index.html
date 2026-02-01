@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Creative Admin Dashboard</title>
+
+<style>
+
+:root {
+    --bg-gradient: linear-gradient(135deg, #667eea, #764ba2);
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --text-color: #000;
+    --card-bg: rgba(255, 255, 255, 0.6);
+    --accent: #4f46e5;
+}
+
+.dark-theme {
+    --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --glass-bg: rgba(0, 0, 0, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-color: #fff;
+    --card-bg: rgba(0, 0, 0, 0.5);
+    --accent: #22d3ee;
+}
+
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+}
+.dashboard {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 70px 1fr 40px;
+    height: 100vh;
+}
+
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+}
+
+header {
+    grid-area: header;
+    margin: 10px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    margin: 0;
+}
+
+header button {
+    background: var(--accent);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+header button:hover {
+    transform: scale(1.1);
+}
+
+aside {
+    grid-area: sidebar;
+    margin: 10px;
+    padding: 20px;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside li {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+aside li:hover {
+    background: var(--card-bg);
+    transform: translateX(5px);
+}
+
+main {
+    grid-area: main;
+    margin: 10px;
+    padding: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--accent);
+}
+
+footer {
+    grid-area: footer;
+    margin: 10px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+<div class="dashboard">
+    <header class="glass">
+        <h2>✨ Admin Dashboard</h2>
+        <button id="toggleTheme">🌗 Theme</button>
+    </header>
+
+    <aside class="glass">
+        <ul>
+            <li>🏠 Dashboard</li>
+            <li>👥 Users</li>
+            <li>📊 Analytics</li>
+            <li>⚙️ Settings</li>
+        </ul>
+    </aside>
+
+    <main class="glass">
+        <h3>Welcome Admin</h3>
+        <p>This creative dashboard uses CSS Grid, glassmorphism, and theme switching.</p>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Users</h3>
+                <p>1,240 Active Users</p>
+            </div>
+            <div class="card">
+                <h3>Revenue</h3>
+                <p>₹3.2L This Month</p>
+            </div>
+            <div class="card">
+                <h3>Performance</h3>
+                <p>98% Uptime</p>
+            </div>
+            <div class="card">
+                <h3>Alerts</h3>
+                <p>3 Pending Issues</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass">
+        © 2026 Creative Admin Panel
+    </footer>
+</div>
+
+<script>
+const btn = document.getElementById("toggleTheme");
+const body = document.body;
+
+/* Load saved theme */
+if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-theme");
+}
+
+/* Toggle theme */
+btn.addEventListener("click", () => {
+    body.classList.toggle("dark-theme");
+    localStorage.setItem(
+        "theme",
+        body.classList.contains("dark-theme") ? "dark" : "light"
+    );
+});
+</script>
+</body>
+</html>

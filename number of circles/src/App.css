@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 15px;
+}
+
+.toolbar {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 90vw;
+}
+
+.toolbar-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toolbar-group label {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.button-group {
+    display: flex;
+    gap: 5px;
+    background: #f0f0f0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.button-group button,
+.btn-undo,
+.btn-clear {
+    padding: 8px 15px;
+    border: none;
+    background: #e0e0e0;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.button-group button:hover,
+.btn-undo:hover,
+.btn-clear:hover {
+    background: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+.button-group button.active {
+    background: #4CAF50;
+    color: white;
+}
+
+.color-picker {
+    width: 50px;
+    height: 40px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.color-picker:hover {
+    border-color: #999;
+}
+
+.color-display {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    transition: box-shadow 0.2s ease;
+}
+
+.btn-undo {
+    background: #ff9800;
+    color: white;
+}
+
+.btn-undo:hover {
+    background: #f57c00;
+}
+
+.btn-clear {
+    background: #f44336;
+    color: white;
+}
+
+.btn-clear:hover {
+    background: #da190b;
+}
+
+.toolbar-group.stats {
+    background: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+    gap: 20px;
+}
+
+.toolbar-group.stats span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.toolbar-group.stats strong {
+    color: #4CAF50;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.canvas {
+    border: 2px solid #999;
+    border-radius: 8px;
+    background: white;
+    cursor: crosshair;
+    width: 90vw;
+    height: 80vh;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    max-width: 1400px;
+    max-height: 800px;
+}
+
+@media (max-width: 768px) {
+    .toolbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .toolbar-group {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .button-group {
+        flex: 1;
+    }
+
+    .canvas {
+        width: 95vw;
+        height: 70vh;
+    }
+}

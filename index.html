@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,4 +11,44 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Character Counter</title>
+
+    <!-- LINK CSS HERE -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="card">
+        <h2>Character Counter</h2>
+
+        <textarea id="inputText" maxlength="200"
+            placeholder="Start typing..."
+            oninput="updateCount()"></textarea>
+
+        <div class="count-box safe">
+            <span id="count">0</span> / 200
+        </div>
+    </div>
+
+    <script>
+        function updateCount() {
+            let len = document.getElementById("inputText").value.length;
+            let box = document.querySelector(".count-box");
+            document.getElementById("count").textContent = len;
+
+            box.className = "count-box";
+
+            if (len < 120) box.classList.add("safe");
+            else if (len < 200) box.classList.add("warning");
+            else box.classList.add("danger");
+        }
+    </script>
+
+</body>
+>>>>>>> cf83ab8e4ee0f877e926a5cc8dce3d672e836065
 </html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Banking App</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.bank {
+    background: #ffffff;
+    width: 380px;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.balance {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 48%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+}
+
+.deposit {
+    background-color: #4caf50;
+    color: white;
+}
+
+.withdraw {
+    background-color: #f44336;
+    color: white;
+}
+
+.message {
+    margin-top: 15px;
+    font-size: 14px;
+    min-height: 18px;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bank">
+    <h2>Bank Account</h2>
+
+    <div class="balance">
+        Balance: ₹<span id="balance">1000</span>
+    </div>
+
+    <input type="number" id="amount" placeholder="Enter amount" min="1">
+
+    <div>
+        <button class="deposit" id="depositBtn">Deposit</button>
+        <button class="withdraw" id="withdrawBtn">Withdraw</button>
+    </div>
+
+    <div id="message" class="message"></div>
+</div>
+
+<script>
+let balance = 1000;
+
+const balanceEl = document.getElementById("balance");
+const amountEl = document.getElementById("amount");
+const messageEl = document.getElementById("message");
+
+function updateBalance() {
+    balanceEl.textContent = balance;
+}
+
+function getAmount() {
+    return Number(amountEl.value);
+}
+
+function showMessage(text, type) {
+    messageEl.textContent = text;
+    messageEl.className = "message " + type;
+}
+
+document.getElementById("depositBtn").addEventListener("click", function () {
+    const amount = getAmount();
+
+    if (amount <= 0 || isNaN(amount)) {
+        showMessage("Please enter a valid amount.", "error");
+        return;
+    }
+
+    balance += amount;
+    updateBalance();
+    showMessage("Amount deposited successfully.", "success");
+    amountEl.value = "";
+});
+
+document.getElementById("withdrawBtn").addEventListener("click", function () {
+    const amount = getAmount();
+
+    if (amount <= 0 || isNaN(amount)) {
+        showMessage("Please enter a valid amount.", "error");
+        return;
+    }
+
+    if (amount > balance) {
+        showMessage("Insufficient balance.", "error");
+        return;
+    }
+
+    balance -= amount;
+    updateBalance();
+    showMessage("Amount withdrawn successfully.", "success");
+    amountEl.value = "";
+});
+</script>
+
+</body>
+</html>
